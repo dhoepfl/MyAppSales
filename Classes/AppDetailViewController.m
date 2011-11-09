@@ -213,23 +213,23 @@
 	switch(stars)
 	{
 		case 5:
-			[cell.ratingImage setImage: [UIImage imageNamed:@"5stars_16.png"]];
+			[cell.ratingImage setImage: [UIImage imageNamed:@"5stars"]];
 			break;
 			
 		case 4:
-			[cell.ratingImage setImage: [UIImage imageNamed:@"4stars_16.png"]];
+			[cell.ratingImage setImage: [UIImage imageNamed:@"4stars"]];
 			break;
 			
 		case 3:
-			[cell.ratingImage setImage: [UIImage imageNamed:@"3stars_16.png"]];
+			[cell.ratingImage setImage: [UIImage imageNamed:@"3stars"]];
 			break;
 			
 		case 2:
-			[cell.ratingImage setImage: [UIImage imageNamed:@"2stars_16.png"]];
+			[cell.ratingImage setImage: [UIImage imageNamed:@"2stars"]];
 			break;
 			
 		case 1:
-			[cell.ratingImage setImage: [UIImage imageNamed:@"1star_16.png"]];
+			[cell.ratingImage setImage: [UIImage imageNamed:@"1star"]];
 			break;
 			
 		default:
