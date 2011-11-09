@@ -380,7 +380,7 @@
 	{
 		DayReportCell *cell = (DayReportCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
-			cell = [[[DayReportCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+			cell = [[[DayReportCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 		}
 		
 		NSString *key = [indexByYearMonthSortedKeys objectAtIndex:indexPath.section];

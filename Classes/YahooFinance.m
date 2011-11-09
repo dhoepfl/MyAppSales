@@ -45,20 +45,20 @@ static YahooFinance *_sharedInstance = nil;
 		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 		NSString *documentsDirectory = [paths objectAtIndex:0];
 		NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Currencies.plist"];
-		self.allCurrencies = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+		self.allCurrencies = [[[NSMutableDictionary alloc] initWithContentsOfFile:path] autorelease];
 		
 		// if that did not work, then get it from the default
 		if (!self.allCurrencies)
 		{
 			path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Currencies.plist"];
-			self.allCurrencies = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+			self.allCurrencies = [[[NSMutableDictionary alloc] initWithContentsOfFile:path] autorelease];
 		}
 		
 		// sort by names
 		NSEnumerator *enu = [allCurrencies keyEnumerator];
 		NSString *key;
 		
-		self.nameIndex = [[NSMutableDictionary alloc] init];
+		self.nameIndex = [[[NSMutableDictionary alloc] init] autorelease];
 		
 		while (key = [enu nextObject]) 
 		{

@@ -28,10 +28,10 @@
 		
 		if (!account)
 		{
-			self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
-																								   target:self action:@selector(save:)];
-			self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
-																								  target:self action:@selector(cancel:)];
+			self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave 
+																								   target:self action:@selector(save:)] autorelease];
+			self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel 
+																								  target:self action:@selector(cancel:)] autorelease];
 			self.navigationItem.rightBarButtonItem.enabled = NO;
 			
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(somethingTyped:) name:UITextFieldTextDidChangeNotification object:nil];
@@ -213,7 +213,7 @@
 			{
 				case 0:
 				{
-					if ((!myAccount)&&(typeForNewAccount==AccountTypeITC)||([myAccount accountType]==AccountTypeITC))
+					if (((!myAccount)&&(typeForNewAccount==AccountTypeITC))||([myAccount accountType]==AccountTypeITC))
 					{
 						cell.titleLabel.text = @"Apple ID";
 					}

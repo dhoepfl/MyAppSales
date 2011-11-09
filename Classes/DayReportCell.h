@@ -25,4 +25,6 @@
 @property (nonatomic, retain) UILabel *royaltyEarnedLabel;
 @property (nonatomic, retain) UILabel *unitsUpdatedLabel;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

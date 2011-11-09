@@ -16,4 +16,6 @@
 
 @property (nonatomic, retain) UILabel *centerLabel;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

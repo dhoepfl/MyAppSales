@@ -15,7 +15,8 @@
 
 @synthesize switchCtl, titleLabel;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
     if (self = TABLEVIEWCELL_PLAIN_INIT) {
         // Initialization code
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -24,8 +25,8 @@
 		// create label views to contain the various pieces of text that make up the cell.
 		// Add these as subviews.
 		titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];	// layoutSubViews will decide the final frame
-		//titleLabel.backgroundColor = [UIColor clearColor];
-		//titleLabel.opaque = NO;
+		titleLabel.backgroundColor = [UIColor clearColor];
+		titleLabel.opaque = NO;
 		//titleLabel.textColor = [UIColor blackColor];
 		//titleLabel.highlightedTextColor = [UIColor whiteColor];
 		titleLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;

@@ -165,7 +165,7 @@ static NSCalendar *gregorian;
 
 - (void) setDate:(NSDate *)aDate
 {
-	if ((aDate == date))
+	if (aDate == date)
 	{
 		return;
 	}

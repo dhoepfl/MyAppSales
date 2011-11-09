@@ -241,9 +241,8 @@ static sqlite3_stmt *init_statement = nil;
 	//NSString *sourceSt = [[NSString alloc] initWithBytes:[receivedData bytes] length:[receivedData length] encoding:NSASCIIStringEncoding];
 	//if (![sourceSt hasPrefix:@"<"])
 	{   // PNG received
-		UIImage *jpgImage = [[UIImage alloc] initWithData:receivedData];
+		UIImage *jpgImage = [[[UIImage alloc] initWithData:receivedData] autorelease];
 		UIImage *tmpImage = [jpgImage scaleImageToSize:CGSizeMake(30, 30)];
-		[jpgImage release];
 		
 		[theConnection release];
 		theConnection = nil;
@@ -260,7 +259,6 @@ static sqlite3_stmt *init_statement = nil;
 			NSString *path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", self.iso3]];
 		
 			[tmpData writeToFile:path atomically:YES];
-			[tmpImage release];
 		}
 		else
 		{

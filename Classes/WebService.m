@@ -97,6 +97,9 @@
 		case SOAPVersion1_2:
 			[envelope appendString:@"<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\">\n"];
 			break;
+        default:
+            // Who cares?
+            break;
 	}
 	[envelope appendString:@"<soap:Body>\n"];
 

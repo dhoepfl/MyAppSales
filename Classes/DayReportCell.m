@@ -16,7 +16,8 @@
 @synthesize dayView;
 @synthesize unitsSoldLabel, royaltyEarnedLabel, unitsUpdatedLabel;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
     if (self = TABLEVIEWCELL_PLAIN_INIT) {
         // Initialization code
 		

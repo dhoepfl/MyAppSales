@@ -17,4 +17,6 @@
 @property (nonatomic, retain) UILabel *title;
 @property (nonatomic, retain) UILabel *value;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

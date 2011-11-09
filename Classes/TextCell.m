@@ -21,7 +21,7 @@
 #define MAIN_FONT_SIZE 16.0
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = TABLEVIEWCELL_PLAIN_INIT;
 	if (self)
@@ -33,8 +33,8 @@
 		// create label views to contain the various pieces of text that make up the cell.
 		// Add these as subviews.
 		title = [[UILabel alloc] initWithFrame:CGRectZero];	// layoutSubViews will decide the final frame
-		//title.backgroundColor = [UIColor clearColor];
-		title.opaque = YES;
+		title.backgroundColor = [UIColor clearColor];
+		title.opaque = NO;
 		title.textColor = [UIColor blackColor];
 		title.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
 		title.highlightedTextColor = [UIColor whiteColor];
@@ -42,8 +42,8 @@
 		[self.contentView addSubview:title];
 		
 		value = [[UILabel alloc] initWithFrame:CGRectZero];	// layoutSubViews will decide the final frame
-		//value.backgroundColor = [UIColor clearColor];
-		value.opaque = YES;
+		value.backgroundColor = [UIColor clearColor];
+		value.opaque = NO;
 		value.textColor = [UIColor colorWithRed:12850./65535 green:20303./65535 blue:34181./65535 alpha:1.0];
 		value.highlightedTextColor = [UIColor whiteColor];
 		value.font = [UIFont systemFontOfSize:MAIN_FONT_SIZE];

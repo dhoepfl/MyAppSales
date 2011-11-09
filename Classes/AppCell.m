@@ -24,7 +24,8 @@
 #define MAIN_FONT_SIZE 14.0
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
     if (self = TABLEVIEWCELL_PLAIN_INIT) 
 	{
 		// create label views to contain the various pieces of text that make up the cell.

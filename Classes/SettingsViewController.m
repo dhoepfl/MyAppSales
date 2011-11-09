@@ -292,7 +292,7 @@
 					SwitchCell *cell = (SwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[SwitchCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+						cell = [[[SwitchCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 						cell.titleLabel.text = @"Download Reviews";
 					}
 					
@@ -358,7 +358,7 @@
 					TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[TextCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+						cell = [[[TextCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 					}
 					
 					cell.title.text = @"Main Currency";
@@ -375,7 +375,7 @@
 					SwitchCell *cell = (SwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[SwitchCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+						cell = [[[SwitchCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 					}
 					
 					cell.titleLabel.text = @"Use for all amounts";
@@ -424,7 +424,7 @@
 					SwitchCell *cell = (SwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[SwitchCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+						cell = [[[SwitchCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 					}
 					
 					cell.titleLabel.text = @"Enable on WLAN";
@@ -441,7 +441,7 @@
 					TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[TextCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+						cell = [[[TextCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 					}
 					
 					cell.title.text = @"Address";
@@ -508,7 +508,7 @@
 			ButtonCell *cell = (ButtonCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 			if (cell == nil) 
 			{
-				cell = [[[ButtonCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+				cell = [[[ButtonCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 			}
 
 			cell.centerLabel.text = @"Empty Cache";

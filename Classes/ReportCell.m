@@ -16,7 +16,7 @@
 #define LEFT_COLUMN_OFFSET 45.0
 #define MAIN_FONT_SIZE 15.0
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:reuseIdentifier
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = TABLEVIEWCELL_PLAIN_INIT;
 	if (self)

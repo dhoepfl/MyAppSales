@@ -31,7 +31,12 @@
 **/
 - (NSString *) createBrowseableIndex:(NSString *)path
 {
-    NSArray *array = [[NSFileManager defaultManager] directoryContentsAtPath:path];
+    NSError *error = nil;
+    NSArray *array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+    
+    if (error) {
+        NSLog(@"Failed to get contents of directory at path %@", path);
+    }
     
     NSMutableString *outdata = [NSMutableString new];
 	[outdata appendString:@"<html><head>"];
@@ -44,11 +49,17 @@
 	[outdata appendFormat:@"<a href=\"..\">..</a><br />\n"];
     for (NSString *fname in array)
     {
-        NSDictionary *fileDict = [[NSFileManager defaultManager] fileAttributesAtPath:[path stringByAppendingPathComponent:fname] traverseLink:NO];
-		//NSLog(@"fileDict: %@", fileDict);
-        NSString *modDate = [[fileDict objectForKey:NSFileModificationDate] description];
-		if ([[fileDict objectForKey:NSFileType] isEqualToString: @"NSFileTypeDirectory"]) fname = [fname stringByAppendingString:@"/"];
-		[outdata appendFormat:@"<a href=\"%@\">%@</a>		(%8.1f Kb, %@)<br />\n", fname, fname, [[fileDict objectForKey:NSFileSize] floatValue] / 1024, modDate];
+        NSError *error = nil;
+        NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:[path stringByAppendingPathComponent:fname] error:&error];
+        if (error) {
+            NSLog(@"Failed to get atributes of item at path %@", [path stringByAppendingPathComponent:fname]);
+            [outdata appendFormat:@"<a href=\"%@\">%@</a>		(??? Kb, ???)<br />\n", fname, fname];
+        } else {
+            //NSLog(@"fileDict: %@", fileDict);
+            NSString *modDate = [[fileDict objectForKey:NSFileModificationDate] description];
+            if ([[fileDict objectForKey:NSFileType] isEqualToString: @"NSFileTypeDirectory"]) fname = [fname stringByAppendingString:@"/"];
+            [outdata appendFormat:@"<a href=\"%@\">%@</a>		(%8.1f Kb, %@)<br />\n", fname, fname, [[fileDict objectForKey:NSFileSize] floatValue] / 1024, modDate];
+        }
     }
     [outdata appendString:@"</p>"];
 	

@@ -22,4 +22,6 @@
 
 @property (nonatomic, retain) App *app;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

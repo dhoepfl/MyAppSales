@@ -15,15 +15,16 @@
 
 @synthesize centerLabel;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier
+{
     if (self = TABLEVIEWCELL_PLAIN_INIT) {
         // Initialization code
 		
 		// create label views to contain the various pieces of text that make up the cell.
 		// Add these as subviews.
 		centerLabel = [[UILabel alloc] initWithFrame:CGRectZero];	// layoutSubViews will decide the final frame
-		//titleLabel.backgroundColor = [UIColor clearColor];
-		//titleLabel.opaque = NO;
+		centerLabel.backgroundColor = [UIColor clearColor];
+		centerLabel.opaque = NO;
 		//titleLabel.textColor = [UIColor blackColor];
 		//titleLabel.highlightedTextColor = [UIColor whiteColor];
 		centerLabel.textAlignment = UITextAlignmentCenter;

@@ -238,7 +238,7 @@
     
 	ReportCell *cell = (ReportCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[ReportCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[ReportCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Set up the cell...

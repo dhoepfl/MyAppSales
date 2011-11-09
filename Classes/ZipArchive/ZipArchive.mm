@@ -59,7 +59,7 @@
 	
 	if (fileDate)
 	{	
-		NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+		NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
 		NSDateComponents *components = [gregorian components:NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSHourCalendarUnit fromDate:fileDate];
 	
 		//zipInfo.dosDate = (unsigned long) current;
@@ -109,7 +109,7 @@
 	zip_fileinfo zipInfo = {0};
 	zipInfo.dosDate = (unsigned long) current;
 	
-	NSDictionary* attr = [[NSFileManager defaultManager] fileAttributesAtPath:file traverseLink:YES];
+	NSDictionary* attr = [[NSFileManager defaultManager] attributesOfItemAtPath:[file stringByResolvingSymlinksInPath] error:nil];
 	if( attr )
 	{
 		NSDate* fileDate = (NSDate*)[attr objectForKey:NSFileModificationDate];
@@ -279,7 +279,6 @@
 {
 	NSMutableArray *retMut = [[NSMutableArray alloc] init];
 	
-	BOOL success = YES;
 	int ret = unzGoToFirstFile( _unzFile );
 	unsigned char		buffer[4096] = {0};
 	if( ret!=UNZ_OK )
@@ -292,7 +291,6 @@
 		if( ret!=UNZ_OK )
 		{
 			[self OutputErrorMessage:@"Error occurs"];
-			success = NO;
 			break;
 		}
 		// reading data and write to file
@@ -302,7 +300,6 @@
 		if( ret!=UNZ_OK )
 		{
 			[self OutputErrorMessage:@"Error occurs while getting file info"];
-			success = NO;
 			unzCloseCurrentFile( _unzFile );
 			break;
 		}

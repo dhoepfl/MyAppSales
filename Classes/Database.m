@@ -310,7 +310,7 @@ static Database *_sharedInstance;
 	//NSData *compressed = [NSData dataWithContentsOfFile:path];
 	
 	NSData *compressed;
-	if (compressed = [[NSData alloc] initWithContentsOfMappedFile:path])
+	if ((compressed = [[NSData alloc] initWithContentsOfMappedFile:path]))
 	{
 		NSData *data = [compressed gzipInflate];
 		
@@ -496,7 +496,7 @@ static Database *_sharedInstance;
 		
 		// get language
 		char *lang_code;
-		if (lang_code = (char *)sqlite3_column_text(statement, 1))
+		if ((lang_code = (char *)sqlite3_column_text(statement, 1)))
 		{
 			NSString *language_code = [NSString stringWithUTF8String:lang_code];
 			NSString *language_name = [loc displayNameForKey:NSLocaleLanguageCode value:language_code];
@@ -1416,7 +1416,7 @@ static Database *_sharedInstance;
     NSString *documentsDirectory = [paths objectAtIndex:0];
 	
 	// get list of all files in document directory
-	NSArray *docs = [fileManager directoryContentsAtPath:documentsDirectory];
+	NSArray *docs = [fileManager contentsOfDirectoryAtPath:documentsDirectory error:nil];
 	NSEnumerator *enu = [docs objectEnumerator];
 	NSString *aString;
 	

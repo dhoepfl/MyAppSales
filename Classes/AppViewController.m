@@ -44,11 +44,11 @@
 	[self.tableView reloadData];
 	
 	// this defines the back button leading BACK TO THIS controller
-	UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc]
+	UIBarButtonItem *backBarButtonItem = [[[UIBarButtonItem alloc]
 										  initWithTitle:@"Apps"
 										  style:UIBarButtonItemStyleBordered
 										  target:nil
-										  action:nil];
+										  action:nil] autorelease];
 	self.navigationItem.backBarButtonItem = backBarButtonItem;
 }
 
@@ -136,7 +136,7 @@
     
     AppCell *cell = (AppCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[AppCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[AppCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Set up the cell...

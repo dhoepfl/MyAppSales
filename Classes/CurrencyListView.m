@@ -96,7 +96,7 @@
     
     TextCell *cell = (TextCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[TextCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[TextCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Set up the cell...

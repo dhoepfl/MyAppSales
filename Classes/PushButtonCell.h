@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) UIButton *button;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

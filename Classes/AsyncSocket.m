@@ -687,7 +687,7 @@ static void MyCFWriteStreamCallback (CFWriteStreamRef stream, CFStreamEventType 
 		//NSLog(@"theSocket4: %hu", [self localPort:theSocket]);
 	}
 	
-	if(port == 0 && theSocket && theSocket6)
+	if(port == 0 && theSocket && theSocket6 && address6)
 	{
 		// The user has passed in port 0, which means he wants to allow the kernel to choose the port for them
 		// However, the kernel will choose a different port for both theSocket and theSocket6
@@ -814,7 +814,7 @@ Failed:;
  * Returns true if either IPv4 or IPv6 is created.
  * If either is missing, an error is returned (even though the method may return true).
 **/
-- (CFSocketRef)createAcceptSocketForAddress:(NSData *)addr error:(NSError **)errPtr
+- (CFSocketRef)newAcceptSocketForAddress:(NSData *)addr error:(NSError **)errPtr
 {
 	struct sockaddr *pSockAddr = (struct sockaddr *)[addr bytes];
 	int addressFamily = pSockAddr->sa_family;

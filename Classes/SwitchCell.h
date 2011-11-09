@@ -18,4 +18,6 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UISwitch *switchCtl;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

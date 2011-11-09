@@ -24,4 +24,6 @@
 @property (nonatomic, retain) UILabel *unitsRefundedLabel;
 @property (nonatomic, retain) UILabel *countryCodeLabel;
 
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

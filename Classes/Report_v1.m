@@ -1426,7 +1426,7 @@ static sqlite3_stmt *hydrate_statement = nil;
 		
 		while (aSale = [en nextObject]) 
 		{
-			if ((ttype==aSale.transactionType))
+			if (ttype==aSale.transactionType)
 			{
 				ret += [[YahooFinance sharedInstance] convertToEuro:(aSale.royaltyPrice * aSale.unitsSold) fromCurrency:aSale.royaltyCurrency]; 
 			}

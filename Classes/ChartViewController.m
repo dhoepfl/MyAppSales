@@ -32,10 +32,10 @@
 {
 	if (self = [super init])
 	{
-		UIView *rootView = [[UIView alloc] init];
+		UIView *rootView = [[[UIView alloc] init] autorelease];
 		self.view = rootView;
 		
-		self.myChart = [[ChartView alloc] initWithChartData:dataDict];
+		self.myChart = [[[ChartView alloc] initWithChartData:dataDict] autorelease];
 		
 		//ASiSTAppDelegate *appDelegate = (ASiSTAppDelegate *)[[UIApplication sharedApplication] delegate];
 		
@@ -47,20 +47,19 @@
 		if ([axis_type isEqualToString:@"Sum"])
 		{
 			double converted_max = [[YahooFinance sharedInstance] convertToCurrency:[[YahooFinance sharedInstance] mainCurrency] amount:myChart.max_chart_value fromCurrency:@"EUR"];
-			self.myAxis = [[AxisView alloc] initWithFrame:axis_size max:converted_max currency:[[YahooFinance sharedInstance] mainCurrency]];
+			self.myAxis = [[[AxisView alloc] initWithFrame:axis_size max:converted_max currency:[[YahooFinance sharedInstance] mainCurrency]] autorelease];
 		}
 		else
 		{
 			double maximum = [[dataDict objectForKey:@"Maximum"] doubleValue];
-			self.myAxis = [[AxisView alloc] initWithFrame:axis_size max:maximum currency:@"Units"];
+			self.myAxis = [[[AxisView alloc] initWithFrame:axis_size max:maximum currency:@"Units"] autorelease];
 		}
 
 		myAxis.opaque = NO;
 		[rootView addSubview:myAxis];
-		[myAxis release];
 		
 		CGRect legend_size = CGRectMake(0, 267.0, 320, 100.0);
-		self.myLegend = [[LegendView alloc] initWithFrame:legend_size Data:dataDict];
+		self.myLegend = [[[LegendView alloc] initWithFrame:legend_size Data:dataDict] autorelease];
 		myAxis.bottom_inset = myLegend.required_height+10.0;
 		myChart.bottom_inset =  myLegend.required_height+10.0;
 		//		myLegend.frame = legend_size;
@@ -72,7 +71,7 @@
 		CGRect chart_size = [myChart chartDimensions];
 		CGRect scroll_size = CGRectMake(0, 0, 320, 367);
 		
-		self.myScroll = [[UIScrollView alloc] initWithFrame:scroll_size];
+		self.myScroll = [[[UIScrollView alloc] initWithFrame:scroll_size] autorelease];
 		[rootView insertSubview:myScroll belowSubview:myAxis];
 		[myScroll addSubview:myChart];
 		[myScroll setContentSize:CGSizeMake(chart_size.size.width, chart_size.size.height)];
@@ -81,7 +80,6 @@
 		
 		myScroll.maximumZoomScale = 1;
 		myScroll.maximumZoomScale = 1;
-		[myChart release];
 		
 		// scroll to the very right
 		chart_size.origin.x = chart_size.size.width - 320.0;

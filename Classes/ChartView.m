@@ -154,7 +154,7 @@
 	int last_week_length = 7;
 	int week = 0;
 	
-	while (oneDate = [self dateFromString:[enu nextObject]]) 
+	while ((oneDate = [self dateFromString:[enu nextObject]])) 
 	{
 		NSDateComponents *weekdayComponents =
 		[gregorian components:NSWeekCalendarUnit| NSWeekdayCalendarUnit fromDate:oneDate];
