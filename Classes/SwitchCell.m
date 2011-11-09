@@ -20,11 +20,10 @@
     if (self = TABLEVIEWCELL_PLAIN_INIT) {
         // Initialization code
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
-
 		
 		// create label views to contain the various pieces of text that make up the cell.
 		// Add these as subviews.
-		titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];	// layoutSubViews will decide the final frame
+		titleLabel = self.textLabel; // Reuse default label
 		titleLabel.backgroundColor = [UIColor clearColor];
 		titleLabel.opaque = NO;
 		//titleLabel.textColor = [UIColor blackColor];
@@ -65,7 +64,6 @@
 
 - (void)dealloc 
 {
-	[titleLabel release];
 	[switchCtl release];
     [super dealloc];
 }

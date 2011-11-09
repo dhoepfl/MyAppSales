@@ -388,26 +388,18 @@
 				{
 					NSString *CellIdentifier = @"ReportSection3";
 					
-					UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-					UISwitch *switcher;
+					SwitchCell *cell = (SwitchCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 					if (cell == nil) 
 					{
-						cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-						switcher = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
-						[switcher addTarget:self action:@selector(toggleSumOnOverview:) forControlEvents:UIControlEventValueChanged];
-						cell.accessoryView = switcher;
-					}
-					else 
-					{
-						switcher = (UISwitch *)cell.accessoryView;
+						cell = [[[SwitchCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
 					}
 
-					
-					cell.textLabel.text = @"Fetch royalty sum and\nshow it on overview (slow)";
-					cell.textLabel.numberOfLines = 0;
-					cell.textLabel.font = [UIFont boldSystemFontOfSize:13];
-					cell.textLabel.adjustsFontSizeToFitWidth = YES;
-					switcher.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"RoyaltyTotalsOnOverView"];
+					cell.titleLabel.text = @"Fetch royalty sum and\nshow it on overview (slow)";
+					cell.titleLabel.numberOfLines = 0;
+					cell.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+					cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+					cell.switchCtl.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"RoyaltyTotalsOnOverView"];
+					[cell.switchCtl addTarget:self action:@selector(toggleSumOnOverview:) forControlEvents:UIControlEventValueChanged];
 					return cell;
 				}
 					
