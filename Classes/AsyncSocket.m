@@ -46,8 +46,8 @@ enum AsyncSocketFlags
 @interface AsyncSocket (Private)
 
 // Socket Implementation
-- (CFSocketRef) createAcceptSocketForAddress:(NSData *)addr error:(NSError **)errPtr;
-- (BOOL) createSocketForAddress:(NSData *)remoteAddr error:(NSError **)errPtr;
+- (CFSocketRef) newAcceptSocketForAddress:(NSData *)addr error:(NSError **)errPtr;
+- (BOOL) newSocketForAddress:(NSData *)remoteAddr error:(NSError **)errPtr;
 - (BOOL) attachSocketsToRunLoop:(NSRunLoop *)runLoop error:(NSError **)errPtr;
 - (BOOL) configureSocketAndReturnError:(NSError **)errPtr;
 - (BOOL) connectSocketToAddress:(NSData *)remoteAddr error:(NSError **)errPtr;
@@ -651,13 +651,13 @@ static void MyCFWriteStreamCallback (CFWriteStreamRef stream, CFStreamEventType 
 
 	if (address)
 	{
-		theSocket = [self createAcceptSocketForAddress:address error:errPtr];
+		theSocket = [self newAcceptSocketForAddress:address error:errPtr];
 		if (theSocket == NULL) goto Failed;
 	}
 	
 	if (address6)
 	{
-		theSocket6 = [self createAcceptSocketForAddress:address6 error:errPtr];
+		theSocket6 = [self newAcceptSocketForAddress:address6 error:errPtr];
 		
 		// Note: The iPhone doesn't currently support IPv6
 		
@@ -792,7 +792,7 @@ Failed:;
 	
 	BOOL pass = YES;
 	
-	if(pass && ![self createSocketForAddress:remoteAddr error:errPtr])   pass = NO;
+	if(pass && ![self newSocketForAddress:remoteAddr error:errPtr])      pass = NO;
 	if(pass && ![self attachSocketsToRunLoop:nil error:errPtr])          pass = NO;
 	if(pass && ![self configureSocketAndReturnError:errPtr])             pass = NO;
 	if(pass && ![self connectSocketToAddress:remoteAddr error:errPtr])   pass = NO;
@@ -835,7 +835,7 @@ Failed:;
 	return socket;
 }
 
-- (BOOL)createSocketForAddress:(NSData *)remoteAddr error:(NSError **)errPtr
+- (BOOL)newSocketForAddress:(NSData *)remoteAddr error:(NSError **)errPtr
 {
 	struct sockaddr *pSockAddr = (struct sockaddr *)[remoteAddr bytes];
 	
